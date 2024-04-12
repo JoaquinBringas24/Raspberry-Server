@@ -1,0 +1,40 @@
+
+{% load compress %}
+{% load static %}
+{% load widget_tweaks %}
+<html>
+    <head>
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+    </head>
+    <div class="min-h-screen border-gray-950 flex bg-indigo-200 justify-center items-center mx-auto">
+    
+        <form method="POST" autocomplete="off">
+        <div class="justify-center items-center mx-auto">
+            <h1 class="text-5xl mx-"> Hi, New User!</h1>
+            <h3><a href="../login">Already have an Account? Click Here</a></h3>
+            <h2 class="text-2xl flex mt-5">Username</h2>
+
+                {% csrf_token %}
+                {{registerform.username|attr:"class: p-2 flex min-w-80 h-10 bg-indigo-300 rounded-md" }}
+
+            <h2 class="text-2xl flex mt-5">Email</h2>
+
+                {{registerform.email|attr:"class: p-2 flex min-w-80 h-10 bg-indigo-300 rounded-md" }}
+
+            <h2 class="text-2xl flex mt-5">Password</h2>
+
+                {{registerform.password1|attr:"class: p-2 flex min-w-80 h-10 bg-indigo-300 rounded-md" }}
+
+            <h2 class="text-2xl mt-5">Confirm Password</h2>
+                {{registerform.password2|attr:"class: p-2 flex min-w-80 h-10 bg-indigo-300 rounded-md" }}
+
+            
+            <button class="w-40 my-5 mx-20 h-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit" value="Register">Sign in</button>
+        </div>
+        </form>
+    
+    </div>
+    
+</html>
